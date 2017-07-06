@@ -15,16 +15,49 @@
     "@schibstedspain/ddd-react-redux": "2.2.0",
     "@schibstedspain/rosetta": "3.10.2",
     "@schibstedspain/sui-component-peer-dependencies": "1",
-    "react-loadable": "4.0.3"
+    "material-ui": "0.18.6",
+    "react-loadable": "4.0.3",
+    "react-tap-event-plugin": "2.0.1",
+    "recompose": "0.23.5",
+    "styletron-react": "2.5.8"
   },
   "devDependencies": {
     "@schibstedspain/sui-bundler": "1",
     "@schibstedspain/sui-lint": "2"
   },
   "sui-bundler": {
-    "offline": true,
+    "offline": {
+      "whitelist": [
+        "::all::"
+      ],
+      "runtime": [
+        {
+          "urlPattern": "code\\.ionicframework\\.com",
+          "handler": "cacheFirst"
+        },
+        {
+          "urlPattern": "fonts\\.googleapis\\.com",
+          "handler": "cacheFirst"
+        },
+        {
+          "urlPattern": "fonts\\.gstatic\\.com",
+          "handler": "cacheFirst"
+        },
+        {
+          "urlPattern": "favicon\\.ico",
+          "handler": "cacheFirst"
+        },
+        {
+          "urlPattern": "cdnjs\\.cloudflare\\.com",
+          "handler": "cacheFirst"
+        }
+      ]
+    },
     "vendor": [
-      "babel-polyfill"
+      "babel-polyfill",
+      "styletron-react",
+      "react",
+      "react-dom"
     ]
   },
   "eslintConfig": {
