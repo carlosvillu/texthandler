@@ -1,0 +1,22 @@
+{
+  "name": "texthandler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "sui-bundler start",
+    "co": "sui-lint run && git commit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@schibstedspain/sui-component-peer-dependencies": "1"
+  },
+  "devDependencies": {
+    "@schibstedspain/sui-bundler": "1",
+    "@schibstedspain/sui-lint": "2"
+  },
+  "eslintConfig": { "extends": ["./node_modules/@schibstedspain/sui-lint/eslintrc.js"]},
+  "sasslintConfig": "./node_modules/@schibstedspain/sui-lint/sass-lint.yml"
+}
