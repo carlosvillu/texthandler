@@ -4,5 +4,5 @@
 
 ### Subida de documentos
 
-![](./assets/main.jpeg)
-![](./assets/review.jpeg)
+![](./.assets/main.jpeg)
+![](./.assets/review.jpeg)
