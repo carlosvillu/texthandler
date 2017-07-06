@@ -10,11 +10,15 @@ import Router from 'react-router/lib/Router'
 import match from 'react-router/lib/match'
 import routes from './routes'
 import browserHistory from 'react-router/lib/browserHistory'
+import Styletron from 'styletron-client'
+import {StyletronProvider} from 'styletron-react'
+import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import Root from './components/Root'
 import i18n from './literals'
 import TextHandler from './domain'
 
+injectTapEventPlugin()
 const domain = new TextHandler()
 
 const render = Component => match({ routes, history: browserHistory }, (error, redirectLocation, renderProps) => {
@@ -22,9 +26,11 @@ const render = Component => match({ routes, history: browserHistory }, (error, r
 
   ReactDOM.render(
     <AppContainer>
-      <Provider i18n={i18n} domain={domain}>
-        <Router {...renderProps} />
-      </Provider>
+      <StyletronProvider styletron={new Styletron()}>
+        <Provider i18n={i18n} domain={domain}>
+          <Router {...renderProps} />
+        </Provider>
+      </StyletronProvider>
     </AppContainer>,
     document.getElementById('root')
   )
