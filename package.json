@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@schibstedspain/ddd-react-redux": "2.2.0",
+    "@schibstedspain/rosetta": "3.10.2",
     "@schibstedspain/sui-component-peer-dependencies": "1",
     "react-loadable": "4.0.3"
   },
