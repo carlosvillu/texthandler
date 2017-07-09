@@ -1,25 +1,38 @@
-import React, {Component, PropTypes} from 'react'
+import React, {PureComponent, PropTypes} from 'react'
 
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 
+import UploadTextsForm from '../UploadTextsForm'
+
 import {FloatingActionButton} from './styles'
 
-class UploadTextsDialog extends Component {
+class UploadTextsDialog extends PureComponent {
   static displayName = 'UploadTextsDialog'
   static propTypes = {
+    onCompleted: PropTypes.func,
     onRequestClose: PropTypes.func,
     onTouchTap: PropTypes.func,
     onHandleClosed: PropTypes.func,
+    onHandleSubmit: PropTypes.func,
     i18n: PropTypes.shape({
       t: PropTypes.func
     }),
-    open: PropTypes.bool
+    open: PropTypes.bool,
+    form: PropTypes.shape({
+      collection: PropTypes.string,
+      sequence: PropTypes.number,
+      course: PropTypes.string,
+      files: PropTypes.array
+    })
   }
 
   render () {
-    const {onRequestClose, open, onTouchTap, i18n} = this.props
+    const {
+      onCompleted, onTouchTap, onRequestClose,
+      open, i18n
+    } = this.props
 
     return (
       <div>
@@ -30,7 +43,7 @@ class UploadTextsDialog extends Component {
           open={open}
           onRequestClose={onRequestClose}
         >
-          The actions in this window were passed in as an array of React objects.
+          <UploadTextsForm onCompleted={onCompleted} />
         </Dialog>
         <FloatingActionButton
           secondary
@@ -38,7 +51,7 @@ class UploadTextsDialog extends Component {
           onTouchTap={onTouchTap}
         >
           <ContentAdd />
-        </FloatingActionButton>
+        </ FloatingActionButton>
       </div>
     )
   }
@@ -51,8 +64,9 @@ class UploadTextsDialog extends Component {
     />,
     <FlatButton
       label={this.props.i18n.t('SUBMIT')}
-      primary
-      onTouchTap={this.props.onHandleClosed}
+      disabled={Object.keys(this.props.form).length === 0}
+      primary={Object.keys(this.props.form).length !== 0}
+      onTouchTap={this.props.onHandleSubmit}
     />
   ])
 }

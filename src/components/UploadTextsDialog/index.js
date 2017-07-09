@@ -8,14 +8,27 @@ import withHandlers from 'recompose/withHandlers'
 
 export default compose(
   withState('open', 'setOpen', false),
+  withState('form', 'setForm', {}),
   getContext({
     i18n: PropTypes.shape({
       t: PropTypes.func
     })
   }),
   withHandlers({
-    onRequestClose: ({setOpen, open}) => () => setOpen(!open),
+    onCompleted: ({setForm}) => form => setForm(form),
+    onRequestClose: ({setOpen, setForm, open}) => () => {
+      setForm({})
+      setOpen(!open)
+    },
     onTouchTap: ({setOpen}) => () => setOpen(true),
-    onHandleClosed: ({setOpen}) => () => setOpen(false)
+    onHandleClosed: ({setForm, setOpen}) => () => {
+      setForm({})
+      setOpen(false)
+    },
+    onHandleSubmit: props => () => {
+      console.log({...props.form}) // eslint-disable-line
+      props.setForm({})
+      props.setOpen(false)
+    }
   })
 )(UploadTextsDialog)
