@@ -43,7 +43,7 @@ class UploadTextsForm extends PureComponent {
       onCompleted
     } = this.props
 
-    collectionConfig &&
+    collection &&
     sequence &&
     course &&
     files &&
