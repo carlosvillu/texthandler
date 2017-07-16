@@ -15,11 +15,13 @@
     "@schibstedspain/ddd-react-redux": "2.2.0",
     "@schibstedspain/rosetta": "3.10.2",
     "@schibstedspain/sui-component-peer-dependencies": "1",
+    "idb-keyval": "2.3.0",
     "material-ui": "0.18.6",
     "react-loadable": "4.0.3",
     "react-tap-event-plugin": "2.0.1",
     "recompose": "0.23.5",
-    "styletron-react": "2.5.8"
+    "styletron-react": "2.5.8",
+    "uuid": "3.1.0"
   },
   "devDependencies": {
     "@schibstedspain/sui-bundler": "1",
