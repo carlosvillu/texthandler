@@ -13,6 +13,7 @@ import browserHistory from 'react-router/lib/browserHistory'
 import Styletron from 'styletron-client'
 import {StyletronProvider} from 'styletron-react'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import idb from 'idb-keyval'
 
 import Root from './components/Root'
 import i18n from './literals'
@@ -20,6 +21,7 @@ import TextHandler from './domain'
 
 injectTapEventPlugin()
 const domain = new TextHandler()
+domain.config('idb', idb)
 
 const render = Component => match({ routes, history: browserHistory }, (error, redirectLocation, renderProps) => {
   if (error) { console.error({error}) }
