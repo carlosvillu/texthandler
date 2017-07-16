@@ -1,11 +1,16 @@
 import config from './config'
 
+import TextsFactory from './factories/texts'
+
 class TextHandler {
   constructor () {
     this._config = config
     this._map = {}
 
     this._map['config'] = this._config
+
+    this._map['upload_texts_use_case'] = TextsFactory.uploadTextsUseCase()
+    this._map['list_texts_use_case'] = TextsFactory.listTextsUseCase()
   }
 
   get (key) {
