@@ -1,6 +1,8 @@
 import {PropTypes} from 'react'
 import UploadTextsDialog from './component'
 
+import {withLocalService} from '@schibstedspain/ddd-react-redux'
+
 import compose from 'recompose/compose'
 import withState from 'recompose/withState'
 import getContext from 'recompose/getContext'
@@ -9,6 +11,7 @@ import withHandlers from 'recompose/withHandlers'
 export default compose(
   withState('open', 'setOpen', false),
   withState('form', 'setForm', {}),
+  withLocalService('upload_texts_use_case'),
   getContext({
     i18n: PropTypes.shape({
       t: PropTypes.func
@@ -26,7 +29,7 @@ export default compose(
       setOpen(false)
     },
     onHandleSubmit: props => () => {
-      console.log({...props.form}) // eslint-disable-line
+      props.uploadTextsUseCase(props.form)
       props.setForm({})
       props.setOpen(false)
     }
